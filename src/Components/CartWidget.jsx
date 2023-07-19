@@ -1,12 +1,13 @@
-import React from 'react'
-import { Flex, Box, Spacer} from "@chakra-ui/react"
+import React from 'react';
+import { Flex, Box, Spacer } from '@chakra-ui/react';
 import { SunIcon } from '@chakra-ui/icons';
+import Carrito from '../Media/cart.svg';
 
 const CartWidget = () => {
   return (
     <Flex>
       <Box>
-        <SunIcon/>
+        <img src={Carrito} alt="cart" width="50px" height="50px" />
       </Box>
       <Spacer />
       <Box>
@@ -14,6 +15,6 @@ const CartWidget = () => {
       </Box>
     </Flex>
   );
-}
+};
 
-export default CartWidget
+export default CartWidget;
