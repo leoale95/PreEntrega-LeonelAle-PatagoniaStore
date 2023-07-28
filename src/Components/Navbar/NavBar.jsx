@@ -1,9 +1,9 @@
 import React from 'react';
 import { Box, Flex, Avatar, HStack, Link, IconButton, Button, Menu, MenuButton, MenuList, MenuItem, MenuDivider, useDisclosure, useColorModeValue, Stack, useColorMode } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon, AddIcon, MoonIcon } from '@chakra-ui/icons';
-import CartWidget from './CartWidget';
-import brand from '../Media/yerbamate.svg'
-import avatar from '../Media/avatar.svg'
+import CartWidget from '../Cart/CartWidget';
+import brand from '../../Assets/yerbamate.svg'
+import avatar from '../../Assets/avatar.svg'
 
 const Links = ['Dashboard', 'Projects', 'Team'];
 
@@ -44,7 +44,7 @@ export default function withAction() {
             <CartWidget/>
             <Menu>
               <MenuButton as={Button} rounded={'full'} variant={'link'} cursor={'pointer'} minW={0}>
-                <Avatar size={'sm'} src={'avatar'} />
+                <Avatar size={'sm'} src={avatar} />
               </MenuButton>
               <MenuList>
                 <MenuItem>Sign in</MenuItem>
