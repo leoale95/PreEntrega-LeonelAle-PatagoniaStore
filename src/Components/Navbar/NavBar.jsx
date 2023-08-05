@@ -1,11 +1,12 @@
 import React from 'react';
-import { Box, Flex, Avatar, HStack, Link, IconButton, Button, Menu, MenuButton, MenuList, MenuItem, MenuDivider, useDisclosure, useColorModeValue, Stack, useColorMode } from '@chakra-ui/react';
-import { HamburgerIcon, CloseIcon, AddIcon, MoonIcon } from '@chakra-ui/icons';
+import { Box, Flex, Avatar, HStack, IconButton, Button, Menu, MenuButton, MenuList, MenuItem,  useDisclosure, useColorModeValue, Stack, useColorMode } from '@chakra-ui/react';
+import { HamburgerIcon, CloseIcon, MoonIcon } from '@chakra-ui/icons';
 import CartWidget from '../Cart/CartWidget';
 import brand from '../../Assets/yerbamate.svg'
 import avatar from '../../Assets/avatar.svg'
+import { Link } from 'react-router-dom';
 
-const Links = ['Dashboard', 'Projects', 'Team'];
+
 
 const NavLink = ({ children }) => (
   <Link px={2} py={1} rounded={'md'} _hover={{ textDecoration: 'none', bg: useColorModeValue('gray.200', 'gray.700') }} href={'#'}>
@@ -25,37 +26,44 @@ export default function withAction() {
           <HStack spacing={8} alignItems={'center'}>
             <Flex>
             <Box px={2} py={1} rounded={'md'} _hover={{ textDecoration: 'none', bg: useColorModeValue('gray.200', 'gray.700') }} >
-              Patagonia store
+             <Link to='/'>Patagonia store </Link> 
               </Box>
               <Box>
+                
               <img src={brand} alt="logo" width='50px' height='50px' />
+              
               </Box>
               </Flex>
             <HStack as={'nav'} spacing={4} display={{ base: 'none', md: 'flex' }}>
-              {Links.map((link) => (
-                <NavLink key={link}>{link}</NavLink>
-              ))}
+              <Link to={`category/bebidas`}>Bebidas</Link>
+              <Link to={`category/dulces`}>Dulces</Link>
+              <Link to={`category/ropa`}>Ropa</Link>
             </HStack>
           </HStack>
-          <Flex alignItems={'center'}>
-            <Button variant={'solid'} colorScheme={'teal'} size={'sm'} mr={4} leftIcon={<AddIcon />}>
-              Cart
-            </Button>
-            <CartWidget/>
-            <Menu>
-              <MenuButton as={Button} rounded={'full'} variant={'link'} cursor={'pointer'} minW={0}>
-                <Avatar size={'sm'} src={avatar} />
-              </MenuButton>
-              <MenuList>
-                <MenuItem>Sign in</MenuItem>
-                <MenuItem>Link 2</MenuItem>
-                <MenuDivider />
-                <MenuItem>Link 3</MenuItem>
-              </MenuList>
-            </Menu>
-            <Button onClick={toggleColorMode}>
-              <MoonIcon />
-            </Button>
+
+          <Flex alignItems={'center'} spacing={4}>
+            <Box>
+              <CartWidget/>
+            </Box>
+            
+            <Box>
+              <Menu>
+                <MenuButton as={Button} rounded={'full'} variant={'link'} cursor={'pointer'} minW={0}>
+                  <Avatar size={'sm'} src={avatar} />
+                </MenuButton>
+                <MenuList>
+                  <MenuItem>Sign in</MenuItem>
+                  <MenuItem>Register</MenuItem>
+                </MenuList>
+                  
+              </Menu>
+            </Box>
+
+            <Box>
+              <Button onClick={toggleColorMode}>
+                <MoonIcon />
+              </Button>
+            </Box>
           </Flex>
         
          

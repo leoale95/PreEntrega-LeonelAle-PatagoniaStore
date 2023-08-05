@@ -1,12 +1,13 @@
 import React from 'react';
 import { Flex, Box, Spacer } from '@chakra-ui/react';
-import Carrito from '../../Assets/cart.svg';
+import { FiShoppingCart } from 'react-icons/fi';
+import {Icon,} from '@chakra-ui/react';
 
 const CartWidget = () => {
   return (
     <Flex>
       <Box>
-        <img src={Carrito} alt="cart" width="50px" height="50px" />
+      <Icon as={FiShoppingCart} h={7} w={7} alignSelf={'center'} />
       </Box>
       <Spacer />
       <Box>
