@@ -1,6 +1,7 @@
 import React from "react";
 import {  Box,  Container,  Stack,  Text,  Image,  Flex,  VStack,  Button,  Heading,  SimpleGrid,  StackDivider,  useColorModeValue,  List,  ListItem,} from "@chakra-ui/react";
 import { MdLocalShipping } from "react-icons/md";
+import ItemCount from '../Cart/ItemCount'
 
 const ItemDetail = ({ isNew, id, nombre, price, rating, numReviews, img }) => {
   return (
@@ -163,7 +164,7 @@ const ItemDetail = ({ isNew, id, nombre, price, rating, numReviews, img }) => {
           >
             Add to cart
           </Button>
-
+            <ItemCount/>
           <Stack direction="row" alignItems="center" justifyContent={"center"}>
             <MdLocalShipping />
             <Text>2-3 business days delivery</Text>
