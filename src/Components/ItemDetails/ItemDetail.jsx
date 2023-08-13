@@ -1,17 +1,33 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import {  Box,  Container,  Stack,  Text,  Image,  Flex,  VStack,  Button,  Heading,  SimpleGrid,  StackDivider,  useColorModeValue,  List,  ListItem,} from "@chakra-ui/react";
 import { MdLocalShipping } from "react-icons/md";
 import ItemCount from '../Cart/ItemCount'
+import { CartContext } from "../../Context/CartContext";
 
-const ItemDetail = ({ isNew, id, nombre, price, rating, numReviews, img }) => {
+const ItemDetail = ({ isNew, id, nombre, price, rating, stock,  numReviews, img }) => {
+  const [quantityAdded, setQuantityAdded] = useState (0)
+
+  const { addItem } = useContext(CartContext)
+
+  const handlleOnAdd = (quantity) =>{
+    setQuantityAdded(quantity)
+
+    const item ={
+      id, nombre, price
+    }
+
+    addItem(item, quantity)
+  }
+
+
   return (
     <Container maxW={"7xl"}>
       <SimpleGrid
-        columns={{ base: 1, lg: 2 }}
+        columns={{ base: 1, lg: 1 }}
         spacing={{ base: 8, md: 10 }}
-        py={{ base: 18, md: 24 }}
+        py={{ base: 18, md: 10 }}
       >
-        <Flex>
+        <Box>
           <Image
             rounded={"md"}
             alt={"product image"}
@@ -21,7 +37,7 @@ const ItemDetail = ({ isNew, id, nombre, price, rating, numReviews, img }) => {
             w={"100%"}
             h={{ base: "100%", sm: "400px", lg: "500px" }}
           />
-        </Flex>
+        </Box>
         <Stack spacing={{ base: 6, md: 10 }}>
           <Box as={"header"}>
             <Heading
@@ -39,7 +55,22 @@ const ItemDetail = ({ isNew, id, nombre, price, rating, numReviews, img }) => {
               USD{price}
             </Text>
           </Box>
-
+          <Button
+            rounded={"none"}
+            w={"full"}
+            mt={8}
+            size={"lg"}
+            py={"7"}
+            bg={useColorModeValue("gray.900", "gray.50")}
+            color={useColorModeValue("white", "gray.900")}
+            textTransform={"uppercase"}
+            _hover={{
+              transform: "translateY(2px)",
+              boxShadow: "lg",
+            }}
+          >
+            Add to cart
+          </Button>
           <Stack
             spacing={{ base: 4, sm: 6 }}
             direction={"column"}
@@ -75,7 +106,7 @@ const ItemDetail = ({ isNew, id, nombre, price, rating, numReviews, img }) => {
               >
                 Features
               </Text>
-
+            
               <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
                 <List spacing={2}>
                   <ListItem>Chronograph</ListItem>
@@ -148,7 +179,7 @@ const ItemDetail = ({ isNew, id, nombre, price, rating, numReviews, img }) => {
             </Box>
           </Stack>
 
-          <Button
+          <Button onClick={() => handlleOnAdd()} 
             rounded={"none"}
             w={"full"}
             mt={8}
@@ -164,7 +195,18 @@ const ItemDetail = ({ isNew, id, nombre, price, rating, numReviews, img }) => {
           >
             Add to cart
           </Button>
-            <ItemCount/>
+            {
+
+              quantityAdded > 0 ? (
+                <Link to= '/Cart'>Terminar Compra</Link>
+              ) : (
+                
+                <ItemCount initial={1} stock={stock} onAdd={handlleOnAdd} />
+
+              )
+            }
+              
+
           <Stack direction="row" alignItems="center" justifyContent={"center"}>
             <MdLocalShipping />
             <Text>2-3 business days delivery</Text>

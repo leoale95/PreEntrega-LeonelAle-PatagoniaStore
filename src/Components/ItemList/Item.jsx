@@ -5,6 +5,8 @@ import { FiShoppingCart } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 
 const Item = ({ isNew, id,  nombre, price, rating, numReviews, img }) => {
+
+  
   function Rating({ rating, numReviews }) {
     return (
       <Box display="flex" alignItems="center">
