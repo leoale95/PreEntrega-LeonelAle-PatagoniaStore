@@ -1,8 +1,9 @@
 import { Box, Heading, Text, Button } from '@chakra-ui/react';
+import { Link } from 'react-router-dom';
 
 export default function NotFound() {
   return (
-    <Box textAlign="center" py={10} px={6}>
+    <Box textAlign="center" py={10} px={10} height={650} alignItems={"center"}>
       <Heading
         display="inline-block"
         as="h2"
@@ -25,7 +26,9 @@ export default function NotFound() {
         color="white"
         variant="solid"
       >
+        <Link to="/" >
         Go to Home
+        </Link>
       </Button>
     </Box>
   );

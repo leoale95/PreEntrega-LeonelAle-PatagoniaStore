@@ -3,12 +3,12 @@ import { Flex, Box, Spacer } from '@chakra-ui/react';
 import { FiShoppingCart } from 'react-icons/fi';
 import {Icon,} from '@chakra-ui/react';
 import { useContext } from 'react';
-import { CartContext } from '../../Context/CartContext';
+import { CartContext } from "../../context/CartContext";
 import { Link } from 'react-router-dom';
 
 
 const CartWidget = () => {
-const {totalQuantity} = useContext(CartContext)
+const { totalQuantity} = useContext(CartContext)
 
   return (
     <Flex>
