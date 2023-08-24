@@ -1,8 +1,8 @@
 import React from 'react';
-import { Flex, Circle, Box, Image, Badge, useColorModeValue, Icon, chakra, Tooltip } from '@chakra-ui/react';
+import { Flex, Circle, Box, Image, Badge, useColorModeValue, Icon, chakra, Tooltip, Button } from '@chakra-ui/react';
 import { BsStar, BsStarFill, BsStarHalf } from 'react-icons/bs';
-import { FiShoppingCart } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
+import AddToCartButton from '../Cart/AddToCartButton';
 
 const Item = ({ isNew, id,  nombre, price, rating, numReviews, img }) => {
 
@@ -59,35 +59,31 @@ const Item = ({ isNew, id,  nombre, price, rating, numReviews, img }) => {
           <Box fontSize="2xl" fontWeight="semibold" as="h4" lineHeight="tight" isTruncated>
             {nombre}
           </Box>
-          <Tooltip
-            label="Add to cart"
-            bg="white"
-            placement={'top'}
-            color={'gray.800'}
-            fontSize={'1.2em'}
-          >
-            <chakra.a href={'#'} display={'flex'}>
-              <Icon as={FiShoppingCart} h={7} w={7} alignSelf={'center'} />
-            </chakra.a>
-          </Tooltip>
+          
+          {/* <AddToCartButton id={id} /> */}
         </Flex>
 
         <Flex justifyContent="space-between" alignContent="center">
           <Rating rating={rating} numReviews={numReviews} />
           <Box fontSize="2xl" color={useColorModeValue('gray.800', 'white')}>
             <Box as="span" color={'gray.600'} fontSize="lg">
-              £
+              USD
             </Box>
             {price.toFixed(2)}
           </Box>
         </Flex>
-          <Box>
-            <Link to={`/item/${id}`} > Ver Detalle </Link>
-          </Box>
+          
+          <Button
+              bg={"blue.400"}
+              rounded={"full"}
+              color={"white"}
+              _hover={{ bg: "blue.500" }}
+            >
+              <Link to={`/item/${id}`} > Ver Detalle </Link>
+            </Button>
       </Box>
     </Box>
   );
 };
 
 export default Item;
-

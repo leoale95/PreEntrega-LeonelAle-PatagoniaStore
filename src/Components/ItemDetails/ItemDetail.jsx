@@ -3,13 +3,14 @@ import {  Box,  Container,  Stack,  Text,  Image,  Flex,  VStack,  Button,  Head
 import { MdLocalShipping } from "react-icons/md";
 import ItemCount from '../Cart/ItemCount'
 import { CartContext } from "../../Context/CartContext";
+import { useCart } from '../../Context/CartContext'; 
 
-const ItemDetail = ({ isNew, id, nombre, price, rating, stock,  numReviews, img }) => {
+const ItemDetail = ({ id, nombre, price, stock, img }) => {
   const [quantityAdded, setQuantityAdded] = useState (0)
 
   const { addItem } = useContext(CartContext)
 
-  const handlleOnAdd = (quantity) =>{
+  const handleOnAdd = (quantity) =>{
     setQuantityAdded(quantity)
 
     const item ={
@@ -23,7 +24,7 @@ const ItemDetail = ({ isNew, id, nombre, price, rating, stock,  numReviews, img 
   return (
     <Container maxW={"7xl"}>
       <SimpleGrid
-        columns={{ base: 1, lg: 1 }}
+        columns={{ base: 1, lg: 2 }}
         spacing={{ base: 8, md: 10 }}
         py={{ base: 18, md: 10 }}
       >
@@ -52,25 +53,10 @@ const ItemDetail = ({ isNew, id, nombre, price, rating, stock,  numReviews, img 
               fontWeight={300}
               fontSize={"2xl"}
             >
-              USD{price}
+              USD {price}
             </Text>
           </Box>
-          <Button
-            rounded={"none"}
-            w={"full"}
-            mt={8}
-            size={"lg"}
-            py={"7"}
-            bg={useColorModeValue("gray.900", "gray.50")}
-            color={useColorModeValue("white", "gray.900")}
-            textTransform={"uppercase"}
-            _hover={{
-              transform: "translateY(2px)",
-              boxShadow: "lg",
-            }}
-          >
-            Add to cart
-          </Button>
+          
           <Stack
             spacing={{ base: 4, sm: 6 }}
             direction={"column"}
@@ -91,120 +77,15 @@ const ItemDetail = ({ isNew, id, nombre, price, rating, stock,  numReviews, img 
               </Text>
               <Text fontSize={"lg"}>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad
-                aliquid amet at delectus doloribus dolorum expedita hic, ipsum
-                maxime modi nam officiis porro, quae, quisquam quos
-                reprehenderit velit? Natus, totam.
+                aliquid amet at delectus doloribus dolorum expedita hic.
               </Text>
             </VStack>
-            <Box>
-              <Text
-                fontSize={{ base: "16px", lg: "18px" }}
-                color={useColorModeValue("yellow.500", "yellow.300")}
-                fontWeight={"500"}
-                textTransform={"uppercase"}
-                mb={"4"}
-              >
-                Features
-              </Text>
-            
-              <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
-                <List spacing={2}>
-                  <ListItem>Chronograph</ListItem>
-                  <ListItem>Master Chronometer Certified</ListItem>
-                  <ListItem>Tachymeter</ListItem>
-                </List>
-                <List spacing={2}>
-                  <ListItem>Anti‑magnetic</ListItem>
-                  <ListItem>Chronometer</ListItem>
-                  <ListItem>Small seconds</ListItem>
-                </List>
-              </SimpleGrid>
-            </Box>
-            <Box>
-              <Text
-                fontSize={{ base: "16px", lg: "18px" }}
-                color={useColorModeValue("yellow.500", "yellow.300")}
-                fontWeight={"500"}
-                textTransform={"uppercase"}
-                mb={"4"}
-              >
-                Product Details
-              </Text>
+             </Stack>
+             
+          
 
-              <List spacing={2}>
-                <ListItem>
-                  <Text as={"span"} fontWeight={"bold"}>
-                    Between lugs:
-                  </Text>{" "}
-                  20 mm
-                </ListItem>
-                <ListItem>
-                  <Text as={"span"} fontWeight={"bold"}>
-                    Bracelet:
-                  </Text>{" "}
-                  leather strap
-                </ListItem>
-                <ListItem>
-                  <Text as={"span"} fontWeight={"bold"}>
-                    Case:
-                  </Text>{" "}
-                  Steel
-                </ListItem>
-                <ListItem>
-                  <Text as={"span"} fontWeight={"bold"}>
-                    Case diameter:
-                  </Text>{" "}
-                  42 mm
-                </ListItem>
-                <ListItem>
-                  <Text as={"span"} fontWeight={"bold"}>
-                    Dial color:
-                  </Text>{" "}
-                  Black
-                </ListItem>
-                <ListItem>
-                  <Text as={"span"} fontWeight={"bold"}>
-                    Crystal:
-                  </Text>{" "}
-                  Domed, scratch‑resistant sapphire crystal with anti‑reflective
-                  treatment inside
-                </ListItem>
-                <ListItem>
-                  <Text as={"span"} fontWeight={"bold"}>
-                    Water resistance:
-                  </Text>{" "}
-                  5 bar (50 metres / 167 feet){" "}
-                </ListItem>
-              </List>
-            </Box>
-          </Stack>
+          <ItemCount stock={stock} addItem={handleOnAdd} />
 
-          <Button onClick={() => handlleOnAdd()} 
-            rounded={"none"}
-            w={"full"}
-            mt={8}
-            size={"lg"}
-            py={"7"}
-            bg={useColorModeValue("gray.900", "gray.50")}
-            color={useColorModeValue("white", "gray.900")}
-            textTransform={"uppercase"}
-            _hover={{
-              transform: "translateY(2px)",
-              boxShadow: "lg",
-            }}
-          >
-            Add to cart
-          </Button>
-            {
-
-              quantityAdded > 0 ? (
-                <Link to= '/Cart'>Terminar Compra</Link>
-              ) : (
-                
-                <ItemCount initial={1} stock={stock} onAdd={handlleOnAdd} />
-
-              )
-            }
               
 
           <Stack direction="row" alignItems="center" justifyContent={"center"}>

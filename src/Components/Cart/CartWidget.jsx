@@ -13,11 +13,14 @@ const { totalQuantity} = useContext(CartContext)
   return (
     <Flex>
       <Box>
-        <Link to='/cart' style={{ display: totalQuantity > 0 ? 'block' : 'none' }}>
+        {/* <Link   > */}
+        <Link to='/cart'>
           <Icon as={FiShoppingCart} h={7} w={7} alignSelf='center' />
         </Link>
       </Box>
+      <Box style={{ display: totalQuantity > 0 ? 'block' : 'none' }}>
       {totalQuantity}
+      </Box>
     </Flex>
   );
 };
