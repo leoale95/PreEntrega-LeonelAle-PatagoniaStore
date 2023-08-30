@@ -1,9 +1,9 @@
 import React, { useContext, useState } from "react";
-import {  Box,  Container,  Stack,  Text,  Image,  Flex,  VStack,  Button,  Heading,  SimpleGrid,  StackDivider,  useColorModeValue,  List,  ListItem,} from "@chakra-ui/react";
+import {  Box,  Container, Link,  Stack,  Text,  Image,  Flex,  VStack,  Button,  Heading,  SimpleGrid,  StackDivider,  useColorModeValue,  List,  ListItem,} from "@chakra-ui/react";
 import { MdLocalShipping } from "react-icons/md";
 import ItemCount from '../Cart/ItemCount'
 import { CartContext } from "../../Context/CartContext";
-import { useCart } from '../../Context/CartContext'; 
+
 
 const ItemDetail = ({ id, nombre, price, stock, img }) => {
   const [quantityAdded, setQuantityAdded] = useState (0)
@@ -58,7 +58,7 @@ const ItemDetail = ({ id, nombre, price, stock, img }) => {
           </Box>
           
           <Stack
-            spacing={{ base: 4, sm: 6 }}
+            spacing={{ base: 3, sm: 5 }}
             direction={"column"}
             divider={
               <StackDivider
@@ -66,7 +66,7 @@ const ItemDetail = ({ id, nombre, price, stock, img }) => {
               />
             }
           >
-            <VStack spacing={{ base: 4, sm: 6 }}>
+            <VStack spacing={{ base: 3, sm: 5 }}>
               <Text
                 color={useColorModeValue("gray.500", "gray.400")}
                 fontSize={"2xl"}
@@ -75,10 +75,7 @@ const ItemDetail = ({ id, nombre, price, stock, img }) => {
                 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
                 diam nonumy eirmod tempor invidunt ut labore
               </Text>
-              <Text fontSize={"lg"}>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad
-                aliquid amet at delectus doloribus dolorum expedita hic.
-              </Text>
+              
             </VStack>
              </Stack>
              
@@ -92,6 +89,8 @@ const ItemDetail = ({ id, nombre, price, stock, img }) => {
             <MdLocalShipping />
             <Text>2-3 business days delivery</Text>
           </Stack>
+         
+        
         </Stack>
       </SimpleGrid>
     </Container>

@@ -6,7 +6,7 @@ import { Link} from 'react-router-dom';
 
 export default function Error() {
   return (
-    <Box textAlign="center" py={10} px={6}>
+    <Box textAlign="center" py={10} px={6} minH={'70vh'}>
       <Box display="inline-block">
         <Flex
           flexDirection="column"

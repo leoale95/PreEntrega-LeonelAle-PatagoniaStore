@@ -1,12 +1,17 @@
+
 import React , { useState, useContext }  from 'react'
 import { db } from '../../Services/firebaseConfig'
 import { writeBatch, Timestamp, doc, collection } from 'firebase/firestore'; 
 import { CartContext } from '../../context/CartContext';
 import CheckoutForm from './CheckoutForm'
+import { useToast } from '@chakra-ui/react';
+
 const Checkout = () => {
   const [loading, setLoading] = useState(false);
   const [orderId, setOrderId] = useState('');
   const { cart, total, clearCart } = useContext(CartContext); 
+  const toast = useToast();
+
 
   const createOrder = async ({ name, phone, email }) => {
     setLoading(true);
@@ -30,7 +35,7 @@ const Checkout = () => {
 
             
       setOrderId(orderRef.id);
-      clearCart(); // Assuming you have a function to clear the cart in your CartContext
+      clearCart(); 
 
       setLoading(false);
     } catch (error) {
@@ -41,14 +46,32 @@ const Checkout = () => {
 
   return (
     <div>
-      {loading && <h1>Se está generando su orden...</h1>}
-      {orderId && <h1>El id de su orden es: {orderId}</h1>}
+      {loading && (
+        <div>
+          {toast({
+            title: 'Generando orden',
+            description: 'Se está generando su orden...',
+            status: 'info',
+            duration: null, // El toast no se cerrará automáticamente
+            isClosable: false,
+          })}
+        </div>
+      )}
+      {orderId && (
+        <div>
+          {toast({
+            title: 'ID de orden',
+            description: `El ID de su orden es: ${orderId}`,
+            status: 'success',
+            duration: 5000,
+            isClosable: true,
+          })}
+        </div>
+      )}
       <div>
-        <h1>Checkout</h1>
         <CheckoutForm onConfirm={createOrder} />
       </div>
     </div>
-
   );
-};
+;}  
 export default Checkout;

@@ -24,14 +24,21 @@ const ItemCount = ({stock, addItem}) => {
 
   return (
     <>
-    
+
+    <Flex align={'center'}
+      justify={'center'} >
+      <IconButton onClick={decrement} aria-label='Decrement count' icon={<TriangleDownIcon />} />
+      <Button>{quantity}</Button>
+      <IconButton onClick={increment} aria-label='Increment count' icon={<TriangleUpIcon />} />
+      <IconButton onClick={reset} aria-label='Increment count' icon={<RepeatIcon />} />
+      </Flex>
     <Button onClick={() => addItem(quantity)} disabled={!stock}
 
             rounded={"none"}
             w={"full"}
-            mt={1}
+            mt={0}
             size={"lg"}
-            py={"1"}
+            py={"0"}
             bg={useColorModeValue("gray.900", "gray.50")}
             color={useColorModeValue("white", "gray.900")}
             textTransform={"uppercase"}
@@ -44,12 +51,7 @@ const ItemCount = ({stock, addItem}) => {
             <Icon as={FiShoppingCart} h={7} w={7} alignSelf='center' />
           </Button>
           
-          <Flex >
-      <IconButton onClick={decrement} aria-label='Decrement count' icon={<TriangleDownIcon />} />
-      <Button>{quantity}</Button>
-      <IconButton onClick={increment} aria-label='Increment count' icon={<TriangleUpIcon />} />
-      <IconButton onClick={reset} aria-label='Increment count' icon={<RepeatIcon />} />
-      </Flex>
+          
     </>
 
   );

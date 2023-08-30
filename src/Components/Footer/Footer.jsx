@@ -51,14 +51,14 @@ export default function SmallCentered() {
       >
         <Logo />
         <Stack direction={'row'} spacing={6}>
-          <Box as="a" href={'/'}>
+          <Box as="a" href={'/'} _hover={{ color: 'green.500' }}>
             Home
           </Box>
-          <Box as="a" href={'#'}>
+          <Box as="a" href={'#'} _hover={{ color: 'green.500' }}>
             About
           </Box>
           
-          <Box as="a" href={'/Contact'}>
+          <Box as="a" href={'/Contact'} _hover={{ color: 'green.500' }}>
             Contact
           </Box>
         </Stack>
@@ -79,14 +79,14 @@ export default function SmallCentered() {
           align={{ base: 'center', md: 'center' }}
         >
           <Text>© 2022 Chakra Templates. All rights reserved</Text>
-          <Stack direction={'row'} spacing={6}>
-            <SocialButton label={'Twitter'} href={'#'}>
-              <FaTwitter />
+          <Stack direction={'row'} spacing={6} _hover={{ color: 'green.500' }} >
+            <SocialButton label={'Twitter'} href={'https://twitter.com'} target="_blank"  >
+              <FaTwitter  />
             </SocialButton>
-            <SocialButton label={'YouTube'} href={'#'}>
+            <SocialButton label={'YouTube'} href={'https://www.youtube.com'}>
               <FaYoutube />
             </SocialButton>
-            <SocialButton label={'Instagram'} href={'#'}>
+            <SocialButton label={'Instagram'} href={'https://www.instagram.com'}>
               <FaInstagram />
             </SocialButton>
           </Stack>
