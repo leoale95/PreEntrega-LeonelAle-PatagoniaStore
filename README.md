@@ -1,13 +1,12 @@
 # Leonel Ale- Patagonia Store, E-commerce
 
-React with Javascript, Chackra UI & Firebase
-Profesor: O.Manias https://github.com/omanias 
-Coder House
+    React with Javascript, Chackra UI & Firebase
+    Profesor: O.Manias 
+    https://github.com/omanias 
+    Coder House
 
-
-
-
-
+## Deploy
+https://pre-entrega-leonel-ale-patagonia-store-k2enznlby.vercel.app/
 
 ---
 
