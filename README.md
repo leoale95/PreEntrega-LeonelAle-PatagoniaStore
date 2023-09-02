@@ -1,6 +1,10 @@
-# Leonel Ale- PatagoniaStore E-commerce
- React with Javascript, Chackra UI & Firebase
- Profesor: O.Manias https://github.com/omanias 
+# Leonel Ale- Patagonia Store, E-commerce
+
+     React with Javascript, Chackra UI & Firebase
+     Profesor: O.Manias https://github.com/omanias 
+    Coder House
+
+
 
 ---
 
@@ -8,14 +12,22 @@
 ## Short Video of the page:
 https://www.loom.com/share/757368d6b52f4491a7740793e0800767?sid=05e7a31e-c974-4159-8936-abef0d6cb156
 
+---
 
 # Documentation
 
-https://www.npmjs.com/
+https://www.npmjs.com/ & https://vitejs.dev/
+Se utilizo Vite para crear la aplicacion de react. Se hizo en Javascript
 
-https://vitejs.dev/
 
+# UX / UI
 https://chakra-ui.com/docs/components 
 
 https://chakra-templates.dev/
+
+Se utilizo Chacrka y chackra templates para el diseño
+
+
+# Base de datos y Login
+https://firebase.google.com/?hl=es-419
 

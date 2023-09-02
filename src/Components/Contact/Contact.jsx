@@ -1,5 +1,3 @@
-'use client'
-
 import {  Box,  Button,  Flex,  FormControl,  FormLabel,  Heading,  IconButton,  Input,  InputGroup,  InputLeftElement,  Text,  Stack,  Textarea,  Tooltip,
   useClipboard,  useColorModeValue,  VStack,} from '@chakra-ui/react'
 import { BsGithub, BsLinkedin, BsPerson, BsTwitter } from 'react-icons/bs'

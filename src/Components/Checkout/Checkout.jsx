@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { db } from '../../Services/firebaseConfig';
-import { writeBatch, Timestamp, collection, addDoc } from 'firebase/firestore';
+import { Timestamp, collection, addDoc } from 'firebase/firestore';
 import { CartContext } from '../../context/CartContext';
 import CheckoutForm from './CheckoutForm';
 import { useToast } from '@chakra-ui/react';
