@@ -16,11 +16,16 @@ https://www.loom.com/share/757368d6b52f4491a7740793e0800767?sid=05e7a31e-c974-41
 
 # Documentation
 
-https://www.npmjs.com/ & https://vitejs.dev/
+## Vite
+
+https://www.npmjs.com/ 
+
+ https://vitejs.dev/
+
 Se utilizo Vite para crear la aplicacion de react. Se hizo en Javascript
 
 
-# UX / UI
+## UX / UI
 https://chakra-ui.com/docs/components 
 
 https://chakra-templates.dev/
@@ -28,6 +33,9 @@ https://chakra-templates.dev/
 Se utilizo Chacrka y chackra templates para el diseño
 
 
-# Base de datos y Login
+## Base de datos y Login
 https://firebase.google.com/?hl=es-419
+
+Se utilizo firebase Auth para la identificacion del usuario
+Se utiizo firebase para traer productos de la base de datos y la creacion de nuevas ordenes de compra.
 
