@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import {  Box,  Container, Link,  Stack,  Text,  Image,  Flex,  VStack,  Button,  Heading,  SimpleGrid,  StackDivider,  useColorModeValue,  List,  ListItem,} from "@chakra-ui/react";
+import {  Box,  Container,  Stack,  Text,  Image,  VStack,   Heading,  SimpleGrid,  StackDivider,  useColorModeValue, } from "@chakra-ui/react";
 import { MdLocalShipping } from "react-icons/md";
 import ItemCount from '../Cart/ItemCount'
 import { CartContext } from "../../Context/CartContext";

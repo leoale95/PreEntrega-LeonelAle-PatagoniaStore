@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { CartContext } from '../../Context/CartContext';
-import {  Card,  Flex,  Box,  Stat,  StatLabel,  StatNumber,  StatHelpText,  Text,  Button,  Heading,} from '@chakra-ui/react';
+import {  Card,  Flex,  Box, Text,  Button,  Heading,} from '@chakra-ui/react';
 
 const CartItem = ({ id, nombre, price, quantity }) => {
   const { cart, clearCart, increaseItemQuantity, decreaseItemQuantity } = useContext(CartContext);

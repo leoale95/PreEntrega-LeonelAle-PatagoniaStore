@@ -3,7 +3,7 @@ import { Flex, Box, } from '@chakra-ui/react';
 import { FiShoppingCart } from 'react-icons/fi';
 import {Icon,} from '@chakra-ui/react';
 import { useContext } from 'react';
-import { CartContext } from "../../context/CartContext";
+import { CartContext } from "../../Context/CartContext";
 import { Link } from 'react-router-dom';
 
 
