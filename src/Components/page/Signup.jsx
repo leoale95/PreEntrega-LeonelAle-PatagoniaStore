@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../Services/firebaseConfig';
+import { FcGoogle } from 'react-icons/fc';
 import {  Flex,  Box,  FormControl,  FormLabel,  Input,  Button,  Heading,  Text,  Link,  useColorModeValue,} from '@chakra-ui/react';
+import { useAuth } from '../../Context/AuthContext'; 
 
 const Signup = () => {
   const navigate = useNavigate();
+  const { loginWithGoogle } = useAuth(); 
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -27,6 +30,15 @@ const Signup = () => {
         console.log(errorCode, errorMessage);
         // ..
       });
+  };
+
+  const handleGoogleSignup = async () => {
+    try {
+      await loginWithGoogle();
+      navigate('/');
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -75,6 +87,14 @@ const Signup = () => {
           loadingText="Signing Up">
           Sign up
         </Button>
+        <Button
+          mt={3}
+          w="full"
+          variant="outline"
+          leftIcon={<FcGoogle />}
+          onClick={handleGoogleSignup}>
+          Sign up with Google
+        </Button>
         <Text mt={4} textAlign="center">
           Already have an account?{' '}
           <Link as={NavLink} to="/login" color="blue.500">
@@ -87,3 +107,4 @@ const Signup = () => {
 };
 
 export default Signup;
+

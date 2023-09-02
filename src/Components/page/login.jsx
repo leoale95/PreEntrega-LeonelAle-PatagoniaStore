@@ -2,14 +2,17 @@ import React, { useState } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../Services/firebaseConfig';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { FcGoogle } from 'react-icons/fc'
-import {  Flex,  Box,  FormControl, Center, Stack,  FormLabel,  Input,  Button,  Text,  Link,  useColorModeValue,} from '@chakra-ui/react';
+import { FcGoogle } from 'react-icons/fc';
+import {  Flex,  Box,  FormControl,  Center,  Stack,  FormLabel,  Input,  Button,
+  Text,  Link,  useColorModeValue,} from '@chakra-ui/react';
 import { useAuth } from '../../Context/AuthContext';
 
 const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const { loginWithGoogle } = useAuth(); // Import the loginWithGoogle function from your AuthContext
 
   const onLogin = (e) => {
     e.preventDefault();
@@ -30,12 +33,11 @@ const Login = () => {
   const handleGoogleSignin = async () => {
     try {
       await loginWithGoogle();
-      navigate("/");
+      navigate('/');
     } catch (error) {
-      setError(error.message);
+      console.error(error);
     }
   };
-
 
   return (
     <Flex
@@ -80,27 +82,20 @@ const Login = () => {
           loadingText="Logging In">
           Login
         </Button>
-        {<Center p={8}>
-      <Stack spacing={2} align={'center'} maxW={'md'} w={'full'}>
-        {/* Google */}
-        <Button w={'full'} variant={'outline'} leftIcon={<FcGoogle />}>
-          <Center>
-            <Text>Sign in with Google</Text>
-          </Center>
-        </Button>
-      </Stack>
-    </Center>
-}
-        <Button
-          mt={3}
-          w="full"
-          variant="outline"
-          leftIcon={<FcGoogle />}
-          onClick={() => {
-            handleGoogleSignin
-          }}>
-          Login with Google
-        </Button>
+        <Center p={8}>
+          <Stack spacing={2} align={'center'} maxW={'md'} w={'full'}>
+            {/* Google */}
+            <Button
+              w={'full'}
+              variant={'outline'}
+              leftIcon={<FcGoogle />}
+              onClick={handleGoogleSignin}>
+              <Center>
+                <Text>Sign in with Google</Text>
+              </Center>
+            </Button>
+          </Stack>
+        </Center>
         <Text mt={4} textAlign="center">
           No account yet?{' '}
           <Link as={NavLink} to="/signup" color="blue.500">
@@ -113,3 +108,4 @@ const Login = () => {
 };
 
 export default Login;
+

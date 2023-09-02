@@ -1,17 +1,15 @@
-
-import React , { useState, useContext }  from 'react'
-import { db } from '../../Services/firebaseConfig'
-import { writeBatch, Timestamp, doc, collection } from 'firebase/firestore'; 
+import React, { useState, useContext } from 'react';
+import { db } from '../../Services/firebaseConfig';
+import { writeBatch, Timestamp, collection, addDoc } from 'firebase/firestore';
 import { CartContext } from '../../context/CartContext';
-import CheckoutForm from './CheckoutForm'
+import CheckoutForm from './CheckoutForm';
 import { useToast } from '@chakra-ui/react';
 
 const Checkout = () => {
   const [loading, setLoading] = useState(false);
   const [orderId, setOrderId] = useState('');
-  const { cart, total, clearCart } = useContext(CartContext); 
+  const { cart, total, clearCart } = useContext(CartContext);
   const toast = useToast();
-
 
   const createOrder = async ({ name, phone, email }) => {
     setLoading(true);
@@ -20,22 +18,18 @@ const Checkout = () => {
         buyer: {
           name: name,
           phone: phone,
-          email: email
+          email: email,
         },
         items: cart,
         total: total,
-        date: Timestamp.fromDate(new Date())
+        date: Timestamp.fromDate(new Date()),
       };
 
-      
-      const batch = writeBatch(db);
+      const ordersCollectionRef = collection(db, 'order');
+      const orderRef = await addDoc(ordersCollectionRef, orderObj);
 
-            const orderRef = doc(collection(db, 'orders'));
-      batch.set(orderRef, orderObj);
-
-            
       setOrderId(orderRef.id);
-      clearCart(); 
+      clearCart();
 
       setLoading(false);
     } catch (error) {
@@ -52,8 +46,8 @@ const Checkout = () => {
             title: 'Generando orden',
             description: 'Se está generando su orden...',
             status: 'info',
-            duration: null, // El toast no se cerrará automáticamente
-            isClosable: false,
+            duration: 1000,
+            isClosable: true,
           })}
         </div>
       )}
@@ -73,5 +67,6 @@ const Checkout = () => {
       </div>
     </div>
   );
-;}  
+};
+
 export default Checkout;

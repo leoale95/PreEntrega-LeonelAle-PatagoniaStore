@@ -1,10 +1,21 @@
-# PreEntrega-LeonelAle-PatagoniaStore
-## React with Javascript and Chackra
-### NavBar y Props
+# Leonel Ale- PatagoniaStore E-commerce
+ React with Javascript, Chackra UI & Firebase
+ Profesor: O.Manias https://github.com/omanias 
 
 ---
 
-## Profesor: O.Manias
-## Alumno: Leonel Ale
 
-https://www.loom.com/share/d018068b974444f4b06780851502d50b?sid=ff6db9f1-ee6f-4719-adf1-19b54cf08f6c
+## Short Video of the page:
+https://www.loom.com/share/757368d6b52f4491a7740793e0800767?sid=05e7a31e-c974-4159-8936-abef0d6cb156
+
+
+# Documentation
+
+https://www.npmjs.com/
+
+https://vitejs.dev/
+
+https://chakra-ui.com/docs/components 
+
+https://chakra-templates.dev/
+

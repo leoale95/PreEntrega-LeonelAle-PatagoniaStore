@@ -2,11 +2,17 @@ import React from 'react';
 import { Box, Flex, Avatar, HStack, IconButton, Button, AvatarBadge, Menu, MenuButton, MenuList, MenuItem,  useDisclosure, useColorModeValue, Stack, useColorMode } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
 import CartWidget from '../Cart/CartWidget';
+import { useAuth } from '../../Context/AuthContext';
 
 
 import { Link } from 'react-router-dom';
 
 const Links = ['Todos los productos', 'Categories', ];
+
+
+
+
+
 
 const NavLink = ({ children }) => (
   <Link px={2} py={1} rounded={'md'} _hover={{ textDecoration: 'none', bg: useColorModeValue('gray.200', 'gray.700') }} href={'/items'}>
@@ -18,7 +24,16 @@ export default function withAction() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { colorMode, toggleColorMode } = useColorMode();
 
+  const { logout, user } = useAuth();
+  
 
+  const handleLogout = async () => {
+    try {
+      await logout();
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
 
   return (
     <>
@@ -74,11 +89,17 @@ export default function withAction() {
           </HStack>
 
           <Flex alignItems={"center"} spacing={8}>
+          {user ? (<p >Welcome  {user.displayName || user.email}</p> ) : null}
             <Box mr={4}>
-              <CartWidget />
-            </Box>
+            {user ? (
+            <Button
+            _hover={{
+              color: "red"
+            }}
+             onClick={handleLogout}>Log Out</Button>
+          ) : (
 
-            <Box mr={4}>
+
               <Menu>
                 <MenuButton
                   as={Button}
@@ -89,24 +110,33 @@ export default function withAction() {
                   
                 >
                   <Avatar bg="teal.500" size={"sm"}>
-                    <AvatarBadge boxSize="1.25em" bg="green.500" />
+                    <AvatarBadge borderColor='papayawhip' bg='tomato' boxSize='1.25em' />
                   </Avatar>
                 </MenuButton>
                 <MenuList >
                   <MenuItem as={Link} to="/signup">
-                    Sign up
+                    Register
                   </MenuItem>
                   <MenuItem as={Link} to="/login">
                     Login
                   </MenuItem>
                 </MenuList>
               </Menu>
+              )}
+
+            
+
+
               <Button onClick={toggleColorMode} ml={2} >
               {colorMode === 'light' ?  <SunIcon /> : <MoonIcon />}
               </Button>
             </Box>
 
-            <Box></Box>
+            <Box mr={4}>
+              <CartWidget />
+            </Box>
+
+            
           </Flex>
         </Flex>
         {isOpen ? (
